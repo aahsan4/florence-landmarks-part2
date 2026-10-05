@@ -1,7 +1,20 @@
-async function loadLandmarks() {
-  const response = await fetch('/api/landmarks');
+const list = document.getElementById('landmark-list');
+const searchInput = document.getElementById('search');
+
+async function loadLandmarks(search = '') {
+  const url = search
+    ? `/api/landmarks?search=${encodeURIComponent(search)}`
+    : '/api/landmarks';
+
+  const response = await fetch(url);
   const landmarks = await response.json();
-  const list = document.getElementById('landmark-list');
+
+  list.innerHTML = '';
+
+  if (landmarks.length === 0) {
+    list.innerHTML = '<p>No landmarks match your search.</p>';
+    return;
+  }
 
   landmarks.forEach(landmark => {
     const card = document.createElement('article');
@@ -14,5 +27,9 @@ async function loadLandmarks() {
     list.appendChild(card);
   });
 }
+
+searchInput.addEventListener('input', () => {
+  loadLandmarks(searchInput.value.trim());
+});
 
 loadLandmarks();
