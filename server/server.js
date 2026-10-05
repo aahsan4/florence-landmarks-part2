@@ -5,7 +5,7 @@ import path from 'path';
 import { fileURLToPath } from 'url';
 
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
-const publicPath = path.join(__dirname, '..', 'public');
+const publicPath = path.join(__dirname, '..', 'client');
 
 const app = express();
 const PORT = 3000;
