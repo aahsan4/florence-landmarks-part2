@@ -17,7 +17,7 @@ async function loadLandmark() {
     <p><strong>Built:</strong> ${l.built}</p>
     <p><strong>Neighborhood:</strong> ${l.neighborhood}</p>
     <p>${l.description}</p>
-    <blockquote><strong>Medici connection:</strong> ${l.mediciConnection}</blockquote>
+    <blockquote><strong>Medici connection:</strong> ${l.medici_connection}</blockquote>
   `;
 }
 
